@@ -12,7 +12,11 @@ public class Tank : MonoBehaviour
     [HideInInspector]
     public List<Leak> leaks;
 
+    public Sprite[] numbers;
+    public SpriteRenderer[] slots;
+
     public float emptY;
+    private float score;
 
     void Start()
     {
@@ -40,6 +44,7 @@ public class Tank : MonoBehaviour
 	    logo.enabled = false;
 
 	    float dificulity = 0;
+	    score = 0;
 
         yield return new WaitForSeconds(Random.Range(4, 8f));
         while (!gamover.enabled)
@@ -75,20 +80,30 @@ public class Tank : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-	    if (water.position.y < emptY && !gamover.enabled)
+	    if (water.position.y < emptY)
 	    {
-	        Debug.Log("GameOver");
-	        gamover.enabled = true;
-	        logo.enabled = true;
-	        foreach (var leak in leaks)
+	        if (!gamover.enabled)
 	        {
-                leak.Crack();
-	            leak.leaking = false;
+	            Debug.Log("GameOver");
+	            gamover.enabled = true;
+	            logo.enabled = true;
+	            foreach (var leak in leaks)
+	            {
+	                leak.Crack();
+	                leak.leaking = false;
+	            }
 	        }
 	    }
-	    else
+	    else if (!logo.enabled)
 	    {
             water.Translate(0, -leaks.Sum(l => l.Flow) * Time.deltaTime, 0);
+	        score += Time.deltaTime;
+
+	        int points = (int)(score*10);
+            slots[0].sprite = numbers[points % 10];
+            slots[1].sprite = numbers[(points / 10) % 10];
+            slots[2].sprite = numbers[(points / 100) % 10];
+            slots[3].sprite = numbers[(points / 1000) % 10];
         }
 	}
 }
