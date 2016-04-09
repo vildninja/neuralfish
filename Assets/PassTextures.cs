@@ -14,12 +14,17 @@ public class PassTextures : MonoBehaviour
 
     private string serverName = "server.dk";
 
+    private bool networkStarted = false;
+
     // Use this for initialization
-    void Start ()
+    void Update ()
     {
-        output.SetPixels(content.GetPixels());
-        output.Apply();
-        PassTexture();
+        if (Input.GetButtonDown("Jump") && !networkStarted)
+        {
+            output.SetPixels(content.GetPixels());
+            output.Apply();
+            PassTexture();
+        }
     }
 
     public void PassTexture()
