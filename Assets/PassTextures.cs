@@ -50,6 +50,7 @@ public class PassTextures : MonoBehaviour
         if (!string.IsNullOrEmpty(www.error))
         {
             Debug.LogError("Web call has errors: " + www.error);
+            yield break;
         }
 
         outName = www.text;
@@ -76,6 +77,7 @@ public class PassTextures : MonoBehaviour
         if (!string.IsNullOrEmpty(www.error))
         {
             Debug.LogError("Web call has errors: " + www.error);
+            yield break;
         }
         
         output.SetPixels(www.texture.GetPixels());
