@@ -19,8 +19,9 @@ public class PassTextures : MonoBehaviour
     // Use this for initialization
     void Update ()
     {
-        if (Input.GetButtonDown("Jump") && !networkStarted)
+        if (Input.GetButtonDown("Refresh") && !networkStarted)
         {
+            networkStarted = true;
             output.SetPixels(content.GetPixels());
             output.Apply();
             PassTexture();

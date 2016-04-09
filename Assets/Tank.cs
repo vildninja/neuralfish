@@ -5,6 +5,7 @@ using System.Linq;
 
 public class Tank : MonoBehaviour
 {
+    private Vector3 waterStart;
     public Transform water;
     public Renderer logo;
     public Renderer gamover;
@@ -13,22 +14,36 @@ public class Tank : MonoBehaviour
 
     public float emptY;
 
-	// Use this for initialization
-	IEnumerator Start ()
+    void Start()
+    {
+        waterStart = water.position;
+        StartCoroutine(GameLoop());
+    }
+    
+	IEnumerator GameLoop ()
     {
 	    leaks = new List<Leak>(FindObjectsOfType<Leak>());
+	    foreach (var leak in leaks)
+	    {
+	        leak.leaking = false;
+	    }
 
-	    while (!Input.GetButtonDown("Fire1"))
+	    water.position = waterStart;
+
+        gamover.enabled = false;
+
+        while (!Input.GetButtonDown("Grab"))
 	    {
 	        yield return null;
 	    }
 
 	    logo.enabled = false;
-	    gamover.enabled = false;
 
+	    float dificulity = 0;
+
+        yield return new WaitForSeconds(Random.Range(4, 8f));
         while (!gamover.enabled)
 	    {
-	        yield return new WaitForSeconds(Random.Range(4, 8f));
             leaks.RemoveAll(l => l.AboveSurface);
 
 	        int fishLeft = 6 - leaks.Count(l => l.fish != null);
@@ -47,20 +62,27 @@ public class Tank : MonoBehaviour
 	            } while (!leak.fish);
 
                 leak.Crack();
-	        }
-	    }
-	}
+            }
+
+            yield return new WaitForSeconds(Random.Range(4, 8f) - Mathf.Clamp(dificulity, 0, 3));
+            dificulity += 0.2f;
+        }
+
+        yield return new WaitForSeconds(5);
+	    StartCoroutine(GameLoop());
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if (water.position.y < emptY)
+	    if (water.position.y < emptY && !gamover.enabled)
 	    {
 	        Debug.Log("GameOver");
 	        gamover.enabled = true;
 	        logo.enabled = true;
 	        foreach (var leak in leaks)
 	        {
+                leak.Crack();
 	            leak.leaking = false;
 	        }
 	    }

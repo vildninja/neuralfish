@@ -9,3 +9,4 @@ Temp
 *.sln
 *.swp
 obj/*
+webgl/

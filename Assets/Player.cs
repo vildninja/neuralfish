@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Grab") && currentGrab == null)
         {
             var fishes = FindObjectsOfType<Fish>().Where(f => !f.GetComponent<Rigidbody2D>().isKinematic);
             foreach (var fish in fishes)
@@ -58,7 +58,7 @@ public class Player : MonoBehaviour
             currentGrab.position = grabber.position;
             currentGrab.rotation = grabber.rotation;
 
-            foreach (var leak in tank.leaks.Where(l => l.Flow > 0 &&
+            foreach (var leak in tank.leaks.Where(l => l != null && l.Flow > 0 &&
                 Vector2.Distance(currentGrab.position, l.transform.position) < 1.5f))
             {
                 leak.fish = currentGrab;
