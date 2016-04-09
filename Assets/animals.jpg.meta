@@ -1,0 +1,185 @@
+fileFormatVersion: 2
+guid: 9b68974719ba87e4f80ab4cbe6bcfe41
+timeCreated: 1460213386
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: frog
+    21300002: rightArm
+    21300004: leftArm
+    21300006: leftLeg
+    21300008: rightLeg
+    21300010: octo
+    21300012: spiky
+    21300014: blob
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: frog
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 70
+        width: 142
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -71, y: 86}
+        - {x: -71, y: -86}
+        - {x: 71, y: -86}
+        - {x: 71, y: 86}
+    - name: rightArm
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 209
+        width: 61
+        height: 94
+      alignment: 9
+      pivot: {x: 0.28583163, y: 0.1778157}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17.43573, y: 77.285324}
+        - {x: -17.43573, y: -16.714676}
+        - {x: 43.56427, y: -16.714676}
+        - {x: 43.56427, y: 77.285324}
+    - name: leftArm
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 264
+        width: 69
+        height: 107
+      alignment: 9
+      pivot: {x: 0.56024367, y: 0.15591174}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38.656815, y: 90.317444}
+        - {x: -38.656815, y: -16.682556}
+        - {x: 30.343185, y: -16.682556}
+        - {x: 30.343185, y: 90.317444}
+    - name: leftLeg
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 45
+        width: 57
+        height: 96
+      alignment: 9
+      pivot: {x: 0.6771069, y: 0.8649578}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -38.595093, y: 12.96405}
+        - {x: -38.595093, y: -83.03595}
+        - {x: 18.404907, y: -83.03595}
+        - {x: 18.404907, y: 12.96405}
+    - name: rightLeg
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 39
+        width: 43
+        height: 106
+      alignment: 9
+      pivot: {x: 0.44475964, y: 0.8025172}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -19.124664, y: 20.933182}
+        - {x: -19.124664, y: -85.06682}
+        - {x: 23.875336, y: -85.06682}
+        - {x: 23.875336, y: 20.933182}
+    - name: octo
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 61
+        width: 145
+        height: 157
+      alignment: 9
+      pivot: {x: 0.22970475, y: 0.46217656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33.30719, y: 84.43828}
+        - {x: -33.30719, y: -72.56172}
+        - {x: 111.69281, y: -72.56172}
+        - {x: 111.69281, y: 84.43828}
+    - name: spiky
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 220
+        width: 146
+        height: 80
+      alignment: 9
+      pivot: {x: 0.24782573, y: 0.40350246}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.182556, y: 47.719803}
+        - {x: -36.182556, y: -32.280197}
+        - {x: 109.817444, y: -32.280197}
+        - {x: 109.817444, y: 47.719803}
+    - name: blob
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 315
+        width: 160
+        height: 143
+      alignment: 9
+      pivot: {x: 0.329274, y: 0.5124578}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -52.683838, y: 69.71854}
+        - {x: -52.683838, y: -73.28146}
+        - {x: 107.31616, y: -73.28146}
+        - {x: 107.31616, y: 69.71854}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
