@@ -29,9 +29,11 @@ public class Player : MonoBehaviour
         var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         body.AddForce(move * 5);
 
-        if (body.velocity.magnitude > 0.1f)
-        {
-            var rot = Mathf.Atan2(body.velocity.y, body.velocity.x)*Mathf.Rad2Deg - 90;
+        if (body.velocity.magnitude > 0.1f || move.magnitude > 0.1f)
+        { 
+            float rot = Mathf.Atan2(move.y, move.x) * Mathf.Rad2Deg - 90;
+            if (move.magnitude < 0.1f)
+                rot = Mathf.Atan2(body.velocity.y, body.velocity.x)*Mathf.Rad2Deg - 90;
             body.MoveRotation(Mathf.MoveTowardsAngle(transform.eulerAngles.z, rot, 10));
         }
     }

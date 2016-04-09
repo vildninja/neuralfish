@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: 89cfc599254b456409a2186a223f7826
-timeCreated: 1460211187
+guid: c15e4fb7e5ce70040b5f3119fc5076e8
+timeCreated: 1460229325
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Water
+    21300002: GameOver
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -19,7 +21,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 0
   cubemapConvolution: 0
@@ -38,7 +40,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -49,7 +51,37 @@ TextureImporter:
   textureType: 5
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Water
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 399
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -256, y: 199.5}
+        - {x: -256, y: -199.5}
+        - {x: 256, y: -199.5}
+        - {x: 256, y: 199.5}
+    - name: GameOver
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 407
+        width: 500
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -250, y: 50}
+        - {x: -250, y: -50}
+        - {x: 250, y: -50}
+        - {x: 250, y: 50}
     outline: []
   spritePackingTag: 
   userData: 

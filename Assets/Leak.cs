@@ -41,11 +41,16 @@ public class Leak : MonoBehaviour
 	{
 	    flow += Time.deltaTime/10;
 	    particles.emissionRate = emission.Evaluate(Flow);
+
+	    if (fish && AboveSurface)
+	    {
+	        Crack();
+	    }
 	}
 
     public void Crack()
     {
-        flow = 0.2f;
+        flow = 0.01f;
         leaking = true;
         if (fish)
         {

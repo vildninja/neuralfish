@@ -6,6 +6,8 @@ using System.Linq;
 public class Tank : MonoBehaviour
 {
     public Transform water;
+    public Renderer logo;
+    public Renderer gamover;
     [HideInInspector]
     public List<Leak> leaks;
 
@@ -16,12 +18,36 @@ public class Tank : MonoBehaviour
     {
 	    leaks = new List<Leak>(FindObjectsOfType<Leak>());
 
-	    while (true)
+	    while (!Input.GetButtonDown("Fire1"))
 	    {
-	        yield return new WaitForSeconds(Random.Range(2, 6f));
+	        yield return null;
+	    }
+
+	    logo.enabled = false;
+	    gamover.enabled = false;
+
+        while (!gamover.enabled)
+	    {
+	        yield return new WaitForSeconds(Random.Range(4, 8f));
             leaks.RemoveAll(l => l.AboveSurface);
 
-	        leaks[Random.Range(0, leaks.Count)].Crack();
+	        int fishLeft = 6 - leaks.Count(l => l.fish != null);
+
+	        if (fishLeft > 1)
+	        {
+	            leaks[Random.Range(0, leaks.Count)].Crack();
+	        }
+	        else
+	        {
+                // make sure to create a leak with one of the fish
+	            Leak leak;
+	            do
+	            {
+	                leak = leaks[Random.Range(0, leaks.Count)];
+	            } while (!leak.fish);
+
+                leak.Crack();
+	        }
 	    }
 	}
 	
@@ -31,6 +57,12 @@ public class Tank : MonoBehaviour
 	    if (water.position.y < emptY)
 	    {
 	        Debug.Log("GameOver");
+	        gamover.enabled = true;
+	        logo.enabled = true;
+	        foreach (var leak in leaks)
+	        {
+	            leak.leaking = false;
+	        }
 	    }
 	    else
 	    {

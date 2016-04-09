@@ -17,10 +17,10 @@ public class PassTextures : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        output.SetPixels(content.GetPixels());
-        output.Apply();
-	    PassTexture();
-	}
+        //output.SetPixels(content.GetPixels());
+        //output.Apply();
+        //PassTexture();
+    }
 
     public void PassTexture()
     {
