@@ -25,7 +25,7 @@ public class Fish : MonoBehaviour
 
     void Update()
     {
-        if (target != null)
+        if (target)
         {
             transform.position = Vector3.Lerp(transform.position, target.position, 0.3f);
             transform.rotation = target.rotation;
@@ -34,6 +34,9 @@ public class Fish : MonoBehaviour
         {
             body.isKinematic = false;
             GetComponent<Collider2D>().enabled = true;
+            var pos = transform.position;
+            pos.z = -0.5f;
+            transform.position = pos;
         }
     }
 	

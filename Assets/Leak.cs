@@ -10,14 +10,23 @@ public class Leak : MonoBehaviour
     public bool leaking = false;
     public Transform fish;
 
+    public AnimationCurve emission;
+
     public bool AboveSurface
     {
         get { return transform.position.y > surface.position.y; }
     }
 
+    private float flow = 0;
+
     public float Flow
     {
-        get { return 0; }
+        get
+        {
+            if (!leaking || fish != null || AboveSurface)
+                return 0;
+            return flow;
+        }
     }
 
 	// Use this for initialization
@@ -29,16 +38,20 @@ public class Leak : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update ()
-    {
-	    
+	{
+	    flow += Time.deltaTime/10;
+	    particles.emissionRate = emission.Evaluate(Flow);
 	}
 
     public void Crack()
     {
+        flow = 0.2f;
         leaking = true;
         if (fish)
         {
-            
+            //this is only destroying the hook
+            Destroy(fish.gameObject);
+            fish = null;
         }
     }
 }

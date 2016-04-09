@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D body;
     private Transform surface;
+    private Tank tank;
 
     public Transform grabber;
     private Transform currentGrab;
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         surface = GameObject.Find("Surface").transform;
-
+	    tank = FindObjectOfType<Tank>();
     }
 
     // Update is called once per frame
@@ -54,6 +55,15 @@ public class Player : MonoBehaviour
         {
             currentGrab.position = grabber.position;
             currentGrab.rotation = grabber.rotation;
+
+            foreach (var leak in tank.leaks.Where(l => l.Flow > 0 &&
+                Vector2.Distance(currentGrab.position, l.transform.position) < 1.5f))
+            {
+                leak.fish = currentGrab;
+                currentGrab.position = leak.transform.position;
+                currentGrab.rotation = leak.transform.rotation;
+                currentGrab = null;
+            }
         }
     }
 }

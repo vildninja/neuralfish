@@ -6,7 +6,8 @@ using System.Linq;
 public class Tank : MonoBehaviour
 {
     public Transform water;
-    private List<Leak> leaks;
+    [HideInInspector]
+    public List<Leak> leaks;
 
     public float emptY;
 
@@ -27,11 +28,13 @@ public class Tank : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-
-        water.Translate(0, - leaks.Sum(l => l.Flow) * Time.deltaTime, 0);
 	    if (water.position.y < emptY)
 	    {
 	        Debug.Log("GameOver");
 	    }
+	    else
+	    {
+            water.Translate(0, -leaks.Sum(l => l.Flow) * Time.deltaTime, 0);
+        }
 	}
 }
