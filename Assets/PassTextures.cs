@@ -17,9 +17,9 @@ public class PassTextures : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        //output.SetPixels(content.GetPixels());
-        //output.Apply();
-        //PassTexture();
+        output.SetPixels(content.GetPixels());
+        output.Apply();
+        PassTexture();
     }
 
     public void PassTexture()
@@ -77,15 +77,26 @@ public class PassTextures : MonoBehaviour
         
         output.SetPixels(www.texture.GetPixels());
         output.Apply();
+
         Debug.Log("Texture " + outName + append + " generated!");
     }
 
 #if UNITY_EDITOR
-    [ContextMenu("CreateOutput")]
+    [ContextMenu("Create Output")]
     public void CreateOutput()
     {
         output = new Texture2D(512, 512);
         UnityEditor.AssetDatabase.CreateAsset(output, "Assets/" + name + ".asset");
+    }
+#endif
+
+#if UNITY_EDITOR
+    [ContextMenu("Bake Output")]
+    public void BakeOutput()
+    {
+        var data = output.EncodeToJPG(98);
+        var path = UnityEditor.AssetDatabase.GetAssetPath(output);
+        System.IO.File.WriteAllBytes(path, data);
     }
 #endif
 }
