@@ -21,11 +21,6 @@ public class PassTextures : MonoBehaviour
         output.Apply();
 	    PassTexture();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	}
 
     public void PassTexture()
     {
@@ -56,9 +51,9 @@ public class PassTextures : MonoBehaviour
         outName = www.text;
         Debug.Log("Web call is done: " + outName);
 
-        for (int i = 1; i < 10; i++)
+        for (int i = 1; i < 33; i++)
         {
-            yield return StartCoroutine(PollTexture("_" + (i*100)));
+            yield return StartCoroutine(PollTexture("_" + (i*30)));
         }
 
         yield return StartCoroutine(PollTexture(""));

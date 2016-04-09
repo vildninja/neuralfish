@@ -80,7 +80,7 @@ func processImage(cName string, sName string, gpu string, outName string) {
 		"-style_image", sName,
 		"-content_image", cName,
 		"-output_image", "/home/jannek/serv2/output" + outName + ".png",
-		"-save_iter", "100",
+		"-save_iter", "30",
 		"-print_iter", "0",
 		"-image_size", "512",
 		"-gpu", gpu)
@@ -169,7 +169,7 @@ func liveFeed(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	fmt.Println("Hello World!")
-	
+
 	rand.Seed(time.Now().UnixNano())
 
 	http.HandleFunc("/", serve)

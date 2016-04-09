@@ -28,7 +28,12 @@ public class Fish : MonoBehaviour
         if (target != null)
         {
             transform.position = Vector3.Lerp(transform.position, target.position, 0.3f);
-            transform.eulerAngles = new Vector3(0, Mathf.MoveTowardsAngle(transform.eulerAngles.y, target.eulerAngles.y, 10), 0);
+            transform.rotation = target.rotation;
+        }
+        else if (body.isKinematic)
+        {
+            body.isKinematic = false;
+            GetComponent<Collider2D>().enabled = true;
         }
     }
 	
