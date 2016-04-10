@@ -44,6 +44,7 @@ public class Tank : MonoBehaviour
 	    logo.enabled = false;
 
 	    float dificulity = 0;
+	    int level = 1;
 	    score = 0;
 
         yield return new WaitForSeconds(Random.Range(4, 8f));
@@ -51,26 +52,34 @@ public class Tank : MonoBehaviour
 	    {
             leaks.RemoveAll(l => l.AboveSurface);
 
-	        int fishLeft = 6 - leaks.Count(l => l.fish != null);
+	        for (int i = 0; i < level; i++)
+	        {
+	            int fishLeft = 6 - leaks.Count(l => l.fish != null);
 
-	        if (fishLeft > 1)
-	        {
-	            leaks[Random.Range(0, leaks.Count)].Crack();
-	        }
-	        else
-	        {
-                // make sure to create a leak with one of the fish
-	            Leak leak;
-	            do
+	            if (fishLeft > 1)
 	            {
-	                leak = leaks[Random.Range(0, leaks.Count)];
-	            } while (!leak.fish);
+	                leaks[Random.Range(0, leaks.Count)].Crack();
+	            }
+	            else
+	            {
+	                // make sure to create a leak with one of the fish
+	                Leak leak;
+	                do
+	                {
+	                    leak = leaks[Random.Range(0, leaks.Count)];
+	                } while (!leak.fish);
 
-                leak.Crack();
-            }
+	                leak.Crack();
+	            }
+	        }
 
-            yield return new WaitForSeconds(Random.Range(4, 8f) - Mathf.Clamp(dificulity, 0, 3));
+	        yield return new WaitForSeconds(Random.Range(4, 8f) - dificulity);
             dificulity += 0.2f;
+	        if (dificulity > 2)
+	        {
+	            dificulity = 0;
+	            level++;
+	        }
         }
 
         yield return new WaitForSeconds(5);

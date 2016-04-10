@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Grab") && currentGrab == null)
+        if (currentGrab == null)
         {
             var fishes = FindObjectsOfType<Fish>().Where(f => !f.GetComponent<Rigidbody2D>().isKinematic);
             foreach (var fish in fishes)
@@ -50,6 +50,15 @@ public class Player : MonoBehaviour
                     currentGrab = new GameObject("hook").transform;
                     fish.Grab(currentGrab);
                 }
+            }
+        }
+
+        if (transform.position.y < surface.position.y && Input.GetButtonDown("Grab"))
+        {
+            var move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            if (move.magnitude > 0.1f)
+            {
+                body.AddForce(move.normalized * 7, ForceMode2D.Impulse);
             }
         }
         

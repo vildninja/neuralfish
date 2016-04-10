@@ -6,6 +6,7 @@ public class Leak : MonoBehaviour
 
     private ParticleSystem particles;
     private Transform surface;
+    private AudioSource source;
 
     public bool leaking = false;
     public Transform fish;
@@ -34,6 +35,7 @@ public class Leak : MonoBehaviour
 	{
 	    particles = GetComponentInChildren<ParticleSystem>();
 	    surface = GameObject.Find("Surface").transform;
+	    source = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -50,6 +52,8 @@ public class Leak : MonoBehaviour
 
     public void Crack()
     {
+        source.pitch = Random.Range(-0.8f, 1.2f);
+        source.Play();
         flow = 0.01f;
         leaking = true;
         if (fish)
