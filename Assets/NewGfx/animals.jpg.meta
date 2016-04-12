@@ -1,0 +1,121 @@
+fileFormatVersion: 2
+guid: a4c5e80e22bb7df49b3ff65c6a96b0e4
+timeCreated: 1460479460
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Player
+    21300002: RedFish
+    21300004: TriangleFish
+    21300006: Tentacles
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 512
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Player
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 230
+        width: 216
+        height: 265
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -108, y: 132.5}
+        - {x: -108, y: -132.5}
+        - {x: 108, y: -132.5}
+        - {x: 108, y: 132.5}
+    - name: RedFish
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 352
+        width: 253
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -126.5, y: 76}
+        - {x: -126.5, y: -76}
+        - {x: 126.5, y: -76}
+        - {x: 126.5, y: 76}
+    - name: TriangleFish
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 38
+        width: 245
+        height: 261
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -122.5, y: 130.5}
+        - {x: -122.5, y: -130.5}
+        - {x: 122.5, y: -130.5}
+        - {x: 122.5, y: 130.5}
+    - name: Tentacles
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 3
+        width: 225
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -112.5, y: 112}
+        - {x: -112.5, y: -112}
+        - {x: 112.5, y: -112}
+        - {x: 112.5, y: 112}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
