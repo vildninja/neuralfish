@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a4c5e80e22bb7df49b3ff65c6a96b0e4
-timeCreated: 1460479460
+timeCreated: 1460543010
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -61,14 +61,14 @@ TextureImporter:
         y: 230
         width: 216
         height: 265
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.5357398, y: 0.49775907}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -108, y: 132.5}
-        - {x: -108, y: -132.5}
-        - {x: 108, y: -132.5}
-        - {x: 108, y: 132.5}
+      - - {x: -115.71979, y: 133.09384}
+        - {x: -115.71979, y: -131.90616}
+        - {x: 100.28021, y: -131.90616}
+        - {x: 100.28021, y: 133.09384}
     - name: RedFish
       rect:
         serializedVersion: 2
@@ -76,14 +76,14 @@ TextureImporter:
         y: 352
         width: 253
         height: 152
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.44132122, y: 0.50390667}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -126.5, y: 76}
-        - {x: -126.5, y: -76}
-        - {x: 126.5, y: -76}
-        - {x: 126.5, y: 76}
+      - - {x: -111.65427, y: 75.40619}
+        - {x: -111.65427, y: -76.59381}
+        - {x: 141.34573, y: -76.59381}
+        - {x: 141.34573, y: 75.40619}
     - name: TriangleFish
       rect:
         serializedVersion: 2
@@ -91,14 +91,14 @@ TextureImporter:
         y: 38
         width: 245
         height: 261
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.4491003, y: 0.49999994}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -122.5, y: 130.5}
-        - {x: -122.5, y: -130.5}
-        - {x: 122.5, y: -130.5}
-        - {x: 122.5, y: 130.5}
+      - - {x: -110.02957, y: 130.50002}
+        - {x: -110.02957, y: -130.49998}
+        - {x: 134.97043, y: -130.49998}
+        - {x: 134.97043, y: 130.50002}
     - name: Tentacles
       rect:
         serializedVersion: 2
@@ -106,14 +106,14 @@ TextureImporter:
         y: 3
         width: 225
         height: 224
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.43665814, y: 0.46288565}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -112.5, y: 112}
-        - {x: -112.5, y: -112}
-        - {x: 112.5, y: -112}
-        - {x: 112.5, y: 112}
+      - - {x: -98.248085, y: 120.313614}
+        - {x: -98.248085, y: -103.686386}
+        - {x: 126.751915, y: -103.686386}
+        - {x: 126.751915, y: 120.313614}
     outline: []
   spritePackingTag: 
   userData: 
