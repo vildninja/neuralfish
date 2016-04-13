@@ -67,13 +67,17 @@ public class Player : MonoBehaviour
             currentGrab.position = grabber.position;
             currentGrab.rotation = grabber.rotation;
 
-            foreach (var leak in tank.leaks.Where(l => l != null && l.Flow > 0 &&
-                Vector2.Distance(currentGrab.position, l.transform.position) < 1.5f))
+            foreach (var leak in tank.leaks)
             {
-                leak.fish = currentGrab;
-                currentGrab.position = leak.transform.position;
-                currentGrab.rotation = leak.transform.rotation;
-                currentGrab = null;
+                if (leak != null && leak.Flow > 0 &&
+                    Vector2.Distance(currentGrab.position, leak.transform.position) < 1.5f)
+                {
+                    leak.fish = currentGrab;
+                    currentGrab.position = leak.transform.position;
+                    currentGrab.rotation = leak.transform.rotation;
+                    currentGrab = null;
+                    break;
+                }
             }
         }
     }
