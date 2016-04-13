@@ -94,14 +94,21 @@ public class PassTextures : MonoBehaviour
         output = new Texture2D(512, 512);
         UnityEditor.AssetDatabase.CreateAsset(output, "Assets/" + name + ".asset");
     }
-#endif
 
-#if UNITY_EDITOR
     [ContextMenu("Bake Output")]
     public void BakeOutput()
     {
         var data = output.EncodeToJPG(98);
         var path = UnityEditor.AssetDatabase.GetAssetPath(output);
+        System.IO.File.WriteAllBytes(path, data);
+    }
+
+    [ContextMenu("Bake Output as New")]
+    public void BakeAsNew()
+    {
+        var data = output.EncodeToJPG(98);
+        var path = UnityEditor.AssetDatabase.GetAssetPath(output);
+        path = path.Replace(".jpg", "_" + style.name + ".jpg");
         System.IO.File.WriteAllBytes(path, data);
     }
 #endif
