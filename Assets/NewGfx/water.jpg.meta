@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c3c1deec9842bcf47a0bf2175448d057
-timeCreated: 1460539452
+timeCreated: 1460552186
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -16,6 +16,7 @@ TextureImporter:
     21300018: water_8
     21300020: water_9
     21300022: Water
+    21300024: water_10
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -242,6 +243,21 @@ TextureImporter:
         - {x: -256, y: -158.5}
         - {x: 256, y: -158.5}
         - {x: 256, y: 158.5}
+    - name: water_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -256, y: 256}
+        - {x: -256, y: -256}
+        - {x: 256, y: -256}
+        - {x: 256, y: 256}
     outline: []
   spritePackingTag: 
   userData: 

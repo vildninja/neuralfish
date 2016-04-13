@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a4c5e80e22bb7df49b3ff65c6a96b0e4
-timeCreated: 1460543010
+timeCreated: 1460551945
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -8,6 +8,7 @@ TextureImporter:
     21300002: RedFish
     21300004: TriangleFish
     21300006: Tentacles
+    21300008: animals_0
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -114,6 +115,21 @@ TextureImporter:
         - {x: -98.248085, y: -103.686386}
         - {x: 126.751915, y: -103.686386}
         - {x: 126.751915, y: 120.313614}
+    - name: animals_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -256, y: 256}
+        - {x: -256, y: -256}
+        - {x: 256, y: -256}
+        - {x: 256, y: 256}
     outline: []
   spritePackingTag: 
   userData: 
