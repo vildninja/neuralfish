@@ -2,7 +2,6 @@
 package main
 
 import (
-	"bufio"
 	"bytes"
 	"fmt"
 	"io"
@@ -41,7 +40,7 @@ func saveFile(r *http.Request, name string) (string, error) {
 	}
 
 	//  ext := strings.ToLower(header.Header.Get("Content-Type"))
-	filename := "/home/jannek/serv/" + header.Filename
+	filename := "/home/jannek/serv2/" + header.Filename
 
 	//	if ext == "image/png" {
 	//		filename = name + ".png"
@@ -54,8 +53,7 @@ func saveFile(r *http.Request, name string) (string, error) {
 
 	f, err := os.Create(filename)
 
-	w := bufio.NewWriter(f)
-	io.Copy(w, file)
+	io.Copy(f, file)
 
 	f.Close()
 
