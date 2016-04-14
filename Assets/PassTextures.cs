@@ -43,6 +43,7 @@ public class PassTextures : MonoBehaviour
         form.AddBinaryData("content", content, name + "_content.jpg", "image/jpeg");
         form.AddBinaryData("style", style, name + "_style.jpg", "image/jpeg");
         form.AddField("gpu", gpu);
+        form.AddField("size", this.content.width);
 
         var www = new WWW(serverName + ":8180", form);
 
@@ -57,9 +58,9 @@ public class PassTextures : MonoBehaviour
         outName = www.text;
         Debug.Log("Web call is done: " + outName);
 
-        for (int i = 1; i < 33; i++)
+        for (int i = 30; i < 1000; i += 30 * 5)
         {
-            yield return StartCoroutine(PollTexture("_" + (i*30)));
+            yield return StartCoroutine(PollTexture("_" + i));
         }
 
         yield return StartCoroutine(PollTexture(""));
@@ -91,7 +92,7 @@ public class PassTextures : MonoBehaviour
     [ContextMenu("Create Output")]
     public void CreateOutput()
     {
-        output = new Texture2D(512, 512);
+        output = new Texture2D(content.width, content.height);
         UnityEditor.AssetDatabase.CreateAsset(output, "Assets/" + name + ".asset");
     }
 
@@ -108,7 +109,7 @@ public class PassTextures : MonoBehaviour
     {
         var data = output.EncodeToJPG(98);
         var path = UnityEditor.AssetDatabase.GetAssetPath(output);
-        path = path.Replace(".jpg", "_" + style.name + ".jpg");
+        path = path.Replace(".jpg", "") + "_" + style.name + ".jpg";
         System.IO.File.WriteAllBytes(path, data);
     }
 #endif

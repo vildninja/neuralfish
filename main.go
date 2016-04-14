@@ -60,7 +60,7 @@ func saveFile(r *http.Request, name string) (string, error) {
 	return filename, nil
 }
 
-func processImage(cName string, sName string, gpu string, outName string) {
+func processImage(cName string, sName string, gpu string, outName string, size string) {
 	fmt.Println(cName + " ready to be processed with " + sName)
 
 
@@ -80,7 +80,7 @@ func processImage(cName string, sName string, gpu string, outName string) {
 		"-output_image", "/home/jannek/serv2/output" + outName + ".png",
 		"-save_iter", "30",
 		"-print_iter", "0",
-		"-image_size", "512",
+		"-image_size", size,
 		"-gpu", gpu)
 	//	cmd.Dir = "/home/jannek/neural-style/"
 
@@ -131,13 +131,17 @@ func serve(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	gpu := r.FormValue("gpu");
-	outName := RandStringBytes(6);
+	gpu := r.FormValue("gpu")
+	size := r.FormValue("size")
+	if size == "" {
+		size = "512"
+	}
+	outName := RandStringBytes(6)
 
 	w.Header().Set("Content-Type", "text/plain")
 	io.WriteString(w, outName)
 
-	go processImage(cName, sName, gpu, outName)
+	go processImage(cName, sName, gpu, outName, size)
 
 	fmt.Println("Goodbye client!")
 }
@@ -167,7 +171,7 @@ func liveFeed(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	fmt.Println("Hello World!")
-
+	
 	rand.Seed(time.Now().UnixNano())
 
 	http.HandleFunc("/", serve)
