@@ -22,9 +22,7 @@ public class PassTextures : MonoBehaviour
         if (Input.GetButtonDown("Refresh") && !networkStarted)
         {
             networkStarted = true;
-            output.SetPixels(content.GetPixels());
-            output.Apply();
-            PassTexture();
+            GenerateTexture();
         }
     }
 
@@ -86,6 +84,14 @@ public class PassTextures : MonoBehaviour
         output.Apply();
 
         Debug.Log("Texture " + outName + append + " generated!");
+    }
+
+    [ContextMenu("Generate texture")]
+    public void GenerateTexture()
+    {
+        output.SetPixels(content.GetPixels());
+        output.Apply();
+        PassTexture();
     }
 
 #if UNITY_EDITOR
