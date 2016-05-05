@@ -12,9 +12,12 @@ public class PassTextures : MonoBehaviour
 
     public int gpu;
 
-    private string serverName = "server.dk";
+    private string serverName = "dendron.sportcaster.dk";
 
     private bool networkStarted = false;
+
+    [HideInInspector]
+    public bool generated = false;
 
     // Use this for initialization
     void Update ()
@@ -30,18 +33,21 @@ public class PassTextures : MonoBehaviour
     {
         var c = content.EncodeToJPG(98);
         var s = style.EncodeToJPG(98);
-        StartCoroutine(Post(c, s));
+        StartCoroutine(Post(c, s, this.content.width));
     }
 
-    public IEnumerator Post(byte[] content, byte[] style)
+    public IEnumerator Post(byte[] content, byte[] style, int size)
     {
         var form = new WWWForm();
 
 
-        form.AddBinaryData("content", content, name + "_content.jpg", "image/jpeg");
-        form.AddBinaryData("style", style, name + "_style.jpg", "image/jpeg");
+        form.AddBinaryData("content", content, name + "_content_.jpg", "image/jpeg");
+        form.AddBinaryData("style", style, name + "_style_.jpg", "image/jpeg");
         form.AddField("gpu", gpu);
-        form.AddField("size", this.content.width);
+        form.AddField("size", size);
+
+        int iterations = 0;
+        form.AddField("iterations", iterations);
 
         var www = new WWW(serverName + ":8180", form);
 
@@ -54,11 +60,14 @@ public class PassTextures : MonoBehaviour
         }
 
         outName = www.text;
-        Debug.Log("Web call is done: " + outName);
+        Debug.Log("Web call is done: " + outName + " gpu " + gpu);
 
-        for (int i = 30; i < 1000; i += 30 * 5)
+        if (iterations > 0)
         {
-            yield return StartCoroutine(PollTexture("_" + i));
+            for (int i = iterations; i < 1000; i += iterations)
+            {
+                yield return StartCoroutine(PollTexture("_" + i));
+            }
         }
 
         yield return StartCoroutine(PollTexture(""));
@@ -66,24 +75,49 @@ public class PassTextures : MonoBehaviour
 
     public IEnumerator PollTexture(string append)
     {
+        generated = false;
         var form = new WWWForm();
         
         form.AddField("image", outName + append);
 
         var www = new WWW(serverName + ":8180/live/", form);
 
-        yield return www;
         
+        for (int i = 0; i < 500; i++)
+        {
+            yield return new WaitForSeconds(1);
+            if (www.isDone)
+                break;
+        }
+
+        if (!www.isDone)
+        {
+            Debug.LogError("Error for gpu " + gpu + ": Web call did not return.");
+            yield break;
+        }
+
+        //yield return www;
+
         if (!string.IsNullOrEmpty(www.error))
         {
-            Debug.LogError("Web call has errors: " + www.error);
+            Debug.LogError("Error for gpu " + gpu + ": Web call has errors: " + www.error);
             yield break;
         }
         
-        output.SetPixels(www.texture.GetPixels());
-        output.Apply();
+        Debug.Log("Creating texture on gpu " + gpu);
+        if (www.texture.GetPixels().Length == output.GetPixels().Length)
+        {
+            output.SetPixels(www.texture.GetPixels());
+            output.Apply();
+            generated = true;
+        }
+        else
+        {
+            Debug.LogError("Error for gpu " + gpu + ": Web texture only has " + www.texture.GetPixels().Length + " pixels\n" +
+                "Required pixels are " + output.GetPixels().Length + " gpu " + gpu);
+        }
 
-        Debug.Log("Texture " + outName + append + " generated!");
+        //Debug.Log("Texture " + outName + append + " generated!");
     }
 
     [ContextMenu("Generate texture")]
